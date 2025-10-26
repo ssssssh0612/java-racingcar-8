@@ -67,7 +67,7 @@ public class RacingCars {
     @Override
     public String toString() {
         return racingCars.stream().
-                map(Object::toString).
+                map(RacingCar::toString).
                 collect(Collectors.joining("\n", "", "\n"));
     }
 
