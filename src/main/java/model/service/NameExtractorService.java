@@ -11,8 +11,13 @@ import model.domain.UserInputString;
 
 public class NameExtractorService {
     private static final int ZERO = 0;
+    private final UserInputString userInputString;
 
-    public RacingCars extractStringReturnRacingCars(UserInputString userInputString) {
+    public NameExtractorService(UserInputString userInputString) {
+        this.userInputString = userInputString;
+    }
+
+    public RacingCars extractStringReturnRacingCars() {
         Iterator<String> names = userInputString.getNameIterator();
         List<RacingCar> racingCars = new ArrayList<>();
         while (names.hasNext()) {

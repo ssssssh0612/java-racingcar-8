@@ -6,12 +6,14 @@ import view.OutputView;
 
 public class RacingCarsService {
     private final OutputView outputView;
+    private final UserInputNumber number;
 
-    public RacingCarsService(OutputView outputView) {
+    public RacingCarsService(UserInputNumber number, OutputView outputView) {
         this.outputView = outputView;
+        this.number = number;
     }
 
-    public RacingCars moveAndLogSnapshots(UserInputNumber number, RacingCars cars){
+    public RacingCars moveAndLogSnapshots(RacingCars cars) {
         outputView.showOutput("");
         outputView.showOutput("실행 결과");
         int count = number.getCount();

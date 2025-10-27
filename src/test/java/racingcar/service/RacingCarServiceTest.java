@@ -38,15 +38,15 @@ class RacingCarsServiceMinimalTest {
 
     @Test
     void count가_2면_헤더2줄_후_스냅샷_3번_찍고_최종상태를_반환한다() {
+        UserInputNumber count = new UserInputNumber("3");
         RecordingOutputView recordingOutputView = new RecordingOutputView();
-        RacingCarsService racingCarsService = new RacingCarsService(recordingOutputView);
+        RacingCarsService racingCarsService = new RacingCarsService(count, recordingOutputView);
 
         // given
         RacingCars racingCars = sampleRacingCars();
-        UserInputNumber count = new UserInputNumber("3");
 
         // when
-        RacingCars result = racingCarsService.moveAndLogSnapshots(count, racingCars);
+        RacingCars result = racingCarsService.moveAndLogSnapshots(racingCars);
 
         // then
         List<String> log = recordingOutputView.snapshot();

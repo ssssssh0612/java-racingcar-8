@@ -13,12 +13,12 @@ public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         UserInputString userInputString = new UserInputString(inputView.getUserInputString());
-        NameExtractorService nameExtractorService = new NameExtractorService();
-        RacingCars racingCars = nameExtractorService.extractStringReturnRacingCars(userInputString);
+        NameExtractorService nameExtractorService = new NameExtractorService(userInputString);
+        RacingCars racingCars = nameExtractorService.extractStringReturnRacingCars();
         OutputView outputView = new OutputView();
-        RacingCarsService racingCarsService = new RacingCarsService(outputView);
         UserInputNumber userInputNumber = new UserInputNumber(inputView.getUserInputNumber());
-        RacingCars movedRacingCars = racingCarsService.moveAndLogSnapshots(userInputNumber, racingCars);
+        RacingCarsService racingCarsService = new RacingCarsService(userInputNumber,outputView);
+        RacingCars movedRacingCars = racingCarsService.moveAndLogSnapshots(racingCars);
         Winners winnerRacingCars = movedRacingCars.findWinners();
         outputView.showOutput(winnerRacingCars.toResult());
     }
